@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Jeopardy</title>
+    <link rel="stylesheet" href="css/ai.css">
+</head>
+
+<body>
+    <h1>Star Wars Jeopardy</h1>
+    <div class="board">
+        <div class="category">Characters</div>
+        <div class="category">Planets</div>
+        <div class="category">Ships</div>
+        <div class="category">Quotes</div>
+        <div class="category">The Force</div>
+
+        <button class="clue" data-question="Who is Luke Skywalker?">$100</button>
+        <button class="clue" data-question="What is Tatooine?">$100</button>
+        <button class="clue" data-question="What is the Millennium Falcon?">$100</button>
+        <button class="clue" data-question="Who said 'I am your father'?">$100</button>
+        <button class="clue" data-question="What is the Jedi?">$100</button>
+
+        <button class="clue" data-question="Who is Darth Vader?">$200</button>
+        <button class="clue" data-question="What is Hoth?">$200</button>
+        <button class="clue" data-question="What is a TIE Fighter?">$200</button>
+        <button class="clue" data-question="Who said 'Do or do not, there is no try'?">$200</button>
+        <button class="clue" data-question="What is the Dark Side?">$200</button>
+
+        <button class="clue" data-question="Who is Leia Organa?">$300</button>
+        <button class="clue" data-question="What is Endor?">$300</button>
+        <button class="clue" data-question="What is an X-Wing?">$300</button>
+        <button class="clue" data-question="Who said 'I've got a bad feeling about this'?">$300</button>
+        <button class="clue" data-question="What are midichlorians?">$300</button>
+
+        <button class="clue" data-question="Who is Han Solo?">$400</button>
+        <button class="clue" data-question="What is Naboo?">$400</button>
+        <button class="clue" data-question="What is a Star Destroyer?">$400</button>
+        <button class="clue" data-question="Who said 'Never tell me the odds'?">$400</button>
+        <button class="clue" data-question="What is a Force ghost?">$400</button>
+
+        <button class="clue" data-question="Who is Obi-Wan Kenobi?">$500</button>
+        <button class="clue" data-question="What is Coruscant?">$500</button>
+        <button class="clue" data-question="What is a Death Star?">$500</button>
+        <button class="clue" data-question="Who said 'These aren't the droids you're looking for'?">$500</button>
+        <button class="clue" data-question="What is balance in the Force?">$500</button>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="question-text"></p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const clues = document.querySelectorAll('.clue');
+        const modal = document.getElementById('modal');
+        const questionText = document.getElementById('question-text');
+
+        clues.forEach(clue => {
+            clue.addEventListener('click', () => {
+                questionText.textContent = clue.dataset.question;
+                modal.classList.remove('hidden');
+                clue.disabled = true;
+                clue.textContent = "✓";
+            });
+        });
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>
